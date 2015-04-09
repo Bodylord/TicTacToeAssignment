@@ -35,7 +35,7 @@ public class boardPieceScript : MonoBehaviour {
 		if(GMscript.game.isGameWon() == true){
 
 				print ("p1 WINAR");
-				GMscript.game.CurrentPlayer = 3;
+				//GMscript.game.CurrentPlayer = 3;
 			}
 
 			else GMscript.game.CurrentPlayer = GMscript.game.getNextPlayer(GMscript.game.CurrentPlayer);

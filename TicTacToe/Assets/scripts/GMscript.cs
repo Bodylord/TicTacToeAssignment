@@ -17,10 +17,12 @@ public class GMscript : MonoBehaviour {
 		new int[] { 0, 3, 6 }, new int[] { 1, 4, 7 }, new int[] { 2, 5, 8 },
 		new int[] { 0, 4, 8 }, new int[] { 2, 4, 6 } };
 
+	// wins[][]
+
 	public int[] GameBoard = new int[9];
 	public int Unplayed = -1;
-	public const int Computer = 0;
-	public const int Human = 1;
+	public int Computer = 0;
+	public int Human = 1;
 
 //	public string[][] Players = new string[][] {
 //		new string[] { "COMPUTER", "X" }, // computer player
@@ -98,21 +100,39 @@ public class GMscript : MonoBehaviour {
 //		return "";
 //	}
 
-	//checks if a player matched 
-	public bool isGameWon()
+
+
+
+
+
+	//checks if a player matched the listed combos
+
+		public bool isGameWon()
 	{
+		bool foundWin = false;
 		for (int i = 0; i < wins.Length; i++) {
-			return takenBySamePlayer(wins[i][0], wins[i][1], wins[i][2]);
+
+			if (GameBoard[wins[i][0]] != Unplayed && GameBoard[wins[i][0]] ==
+			    GameBoard[wins[i][1]] && GameBoard[wins[i][0]] == GameBoard[wins[i][2]]){
+
+				foundWin = true;
+			}
 		}
 
-		return false;
+		return foundWin;
 	}
 
-	public bool takenBySamePlayer(int a, int b, int c)
-	{
-		return GameBoard[a] != Unplayed && GameBoard[a] ==
-			GameBoard[b] && GameBoard[a] == GameBoard[c];
-	}
+//	void CheckCombo()
+//	{
+//		for (int j = 0; j < board.GetLength(0); j++) 
+//		{
+//			if (board[j,0] == board[j,1] && board[j,1] == board[j,2] && board[j,0] != 0) win = true;
+//			else if (board[0,j] == board[1,j] && board[1,j] == board[2,j] && board[0,j] != 0) win = true;
+//			else if (board[0,0] == board[1,1] && board[1,1] == board[2,2] && board[0,0] != 0) win = true;
+//			else if (board[0,2] == board[1,1] && board[1,1] == board[2,0] && board[0,2] != 0) win = true;
+//			if (win == true) print ("win!");
+//		}
+//	}
 
 	public bool isGameTied()
 	{
@@ -150,4 +170,6 @@ public class GMscript : MonoBehaviour {
 		return Unplayed;
 		//what should go here?
 	}
+
+
 }
